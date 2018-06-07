@@ -6,14 +6,26 @@ using System.Threading.Tasks;
 
 namespace MiniSQL
 {
-    partial class MiniSQL
+    public partial class MiniSQL
     {
-        bool checkSyntax(string sql);
+        bool checkSyntax(string sql)
+        {
+            return false;
+        }
 
-        Request parse(string sql);
+        Request parse(string sql)
+        {
+            return null;
+        }
 
-        bool checkLexeme(Request request);
+        bool checkLexeme(Request request)
+        {
+            return false;
+        }
 
-        Response excute(Request request);
+        Response execute(Request request)
+        {
+            return null;
+        }
     }
 }

@@ -8,5 +8,16 @@ namespace MiniSQL
 {
     class Response
     {
+        string message;
+    }
+
+    class TableResponse : Response
+    {
+
+    }
+
+    class MessageResponse : Response
+    {
+
     }
 }

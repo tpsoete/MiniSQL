@@ -8,32 +8,67 @@ namespace MiniSQL
 {
     class FieldType
     {
-        readonly int code;
+        const int MaxChar = 255, MaxCode = 257;
 
-        FieldType(int c)
-        {
-            code = c;
+        public const int Int = 256, Float = 257, Invalid = 0;
+        public static int Char(int i) {
+            if (i > 0 && i <= MaxChar) return i;
+            return Invalid;
         }
 
-        public string Name()
+        static int check(int i)
         {
-            if (code > 0) return string.Format("char({0})", code);
-            else switch (code) {
-                    case 0: return "int";
-                    case -1: return "float";
-                    default: throw new Exception(string.Format("Invalid FieldType code = {0}", code));
-                }
+            if (i > MaxCode) return Invalid;
+            if (i > 0) return Char(i);
+            return i;
         }
-
-        // （伪）常量
-
-        static readonly FieldType Int = new FieldType(0);
-        static readonly FieldType Float = new FieldType(-1);
         
-        static FieldType Char(int i)
+        public readonly int code;
+
+        public FieldType(int typecode)
         {
-            if (i > 0 && i <= 255) return new FieldType(i);
-            else throw new Exception(string.Format("Invalid FieldType Char({0})", i));
+            code = check(typecode);
+        }
+
+        public FieldType(string typename)
+        {
+            string tn = typename.Trim().ToLower();
+            try
+            {
+                if (tn.StartsWith("char") && tn.EndsWith(")"))
+                {
+                    int i = Convert.ToInt32(tn.Substring(5, tn.Length - 6));
+                    code = Char(i);
+                }
+                else switch (tn) {
+                        case "int": code = Int; break;
+                        case "float": code = Float; break;
+                        default: code = Invalid; break;
+                    }
+            }
+            catch
+            {
+                code = Invalid;
+            }
+        }
+
+        public bool IsChar
+        {
+            get
+            {
+                return code > 0 && code <= MaxChar;
+            }
+        }
+
+        public int Size {
+            get {
+                switch (code) {
+                    case Int: return sizeof(int);
+                    case Float: return sizeof(float);
+                    case Invalid: return 0;
+                    default: return code;
+                }
+            }
         }
     }
 }

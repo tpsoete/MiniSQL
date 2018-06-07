@@ -6,16 +6,35 @@ using System.Threading.Tasks;
 
 namespace MiniSQL
 {
-    partial class MiniSQL
+    public partial class MiniSQL
     {
-        byte[] read(Address addr);
-        bool write(Address addr, byte[] data);
-        Address findFreeSpace(string table);
-        bool free(Address addr);
+        byte[] read(Address addr)
+        {
+            return null;
+        }
+
+        bool write(Address addr, byte[] data)
+        {
+            return false;
+        }
+
+        Address findFreeSpace(string table)
+        {
+            return null;
+        }
+        bool free(Address addr)
+        {
+            return false;
+        }
 
 
-
-        Block readFromFile(string file, int offset);
-        bool writeToFile(Block b, string file, int offset);
+        Block readFromFile(string file, int offset)
+        {
+            return null;
+        }
+        bool writeToFile(Block b, string file, int offset)
+        {
+            return false;
+        }
     }
 }

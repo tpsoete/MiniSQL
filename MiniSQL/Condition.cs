@@ -8,5 +8,13 @@ namespace MiniSQL
 {
     class Condition
     {
+        public string fieldName;
+        public string op;
+        public object right;
+
+        public bool judge(object o)
+        {
+            return true;
+        }
     }
 }

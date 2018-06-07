@@ -6,20 +6,41 @@ using System.Threading.Tasks;
 
 namespace MiniSQL
 {
-    partial class MiniSQL
+    public partial class MiniSQL
     {
-        Response createTable(Request request);
+        Response createTable(Request request)
+        {
+            return null;
+        }
 
-        Response dropTable(Request request);
+        Response dropTable(Request request)
+        {
+            return null;
+        }
 
-        Response createIndex(Request request);
+        Response createIndex(Request request)
+        {
+            return null;
+        }
 
-        Response dropIndex(Request request);
+        Response dropIndex(Request request)
+        {
+            return null;
+        }
 
-        Response select(Request request);
+        Response select(Request request)
+        {
+            return null;
+        }
 
-        Response insert(Request request);
+        Response insert(Request request)
+        {
+            return null;
+        }
 
-        Response delete(Request request);
+        Response delete(Request request)
+        {
+            return null;
+        }
     }
 }

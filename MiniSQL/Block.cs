@@ -8,11 +8,31 @@ namespace MiniSQL
 {
     class Block
     {
-        string file;
-        int fileOffset;
-        int spaceUsed;
-        bool isDirty;
+        public const int SIZE = 4096;
+
+        public BlockAddress addr;
+        public int spaceUsed;
+        public bool isDirty;
 
         byte[] data;
+
+        Block(string filename, int offset)
+        {
+            data = new byte[SIZE];
+            addr.file = filename;
+            addr.fileOffset = offset;
+            spaceUsed = 0;
+            isDirty = false;
+        }
+
+        public bool load()
+        {
+            return false;
+        }
+
+        public bool save()
+        {
+            return false;
+        }
     }
 }

@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace MiniSQL
 {
-    class Address
+    class BlockAddress
     {
         public string file;
         public int fileOffset;
+    }
+
+    class Address : BlockAddress
+    {
         public int blockOffset;
     }
 }

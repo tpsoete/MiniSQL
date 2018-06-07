@@ -14,7 +14,7 @@ namespace MiniSQL
 
         bool LRUreplace(Block b) { return false; }
 
-        bool isDirty(Block b) { return false; }
+        bool isDirty(Block b) { return b.isDirty; }
 
         bool pin(Block b) { return false; }
     }
