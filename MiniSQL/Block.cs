@@ -14,9 +14,9 @@ namespace MiniSQL
         public int spaceUsed;
         public bool isDirty;
 
-        byte[] data;
+        public byte[] data;
 
-        Block(string filename, int offset)
+        public Block(string filename, int offset)
         {
             data = new byte[SIZE];
             addr.file = filename;

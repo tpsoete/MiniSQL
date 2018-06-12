@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.IO;
 
 namespace MiniSQL
 {
@@ -14,14 +15,14 @@ namespace MiniSQL
         Dictionary<string, Index> indices;
 
         public string log;
-        public string path;
+        bool quit = false;
 
         public MiniSQL(string workspace)
         {
             tables = new Dictionary<string, Table>();
             indices = new Dictionary<string, Index>();
             log = "";
-            path = workspace;
+            Directory.SetCurrentDirectory(workspace);
         }
 
         ~MiniSQL()
@@ -31,7 +32,7 @@ namespace MiniSQL
 
         void addLog(string msg)
         {
-            log += msg + '\n';
+            log += msg + Environment.NewLine;
         }
 
         void clearLog()
@@ -39,7 +40,7 @@ namespace MiniSQL
             log = "";
         }
 
-
+        // 执行单独的SQL语句
         public DataTable SQL(string sql)
         {
             try
@@ -61,6 +62,7 @@ namespace MiniSQL
             return null;
         }
 
+        // 拆分并识别命令（quit, execfile)
         public DataSet command(string cmd)
         {
             return null;
@@ -69,6 +71,21 @@ namespace MiniSQL
         public DataSet execfile(string filename)
         {
             return new DataSet();
+        }
+
+
+
+        public void Test(string input)
+        {
+            // 测试内容
+            clearLog();
+            string[] sa = input.Split(' ');
+            if (sa.Length < 2) addLog("Invalid input");
+            else
+            {
+                int ans = int.Parse(sa[0]) + int.Parse(sa[1]);
+                addLog(ans.ToString());
+            }
         }
     }
 }

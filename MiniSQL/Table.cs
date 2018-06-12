@@ -23,7 +23,8 @@ namespace MiniSQL
         public string pkey;
         public int rowSize;
 
-        public string rowfile;
+        public string dataFile;
+        public int blockCount;
 
         public Table(CreateRequest request)
         {
@@ -38,7 +39,7 @@ namespace MiniSQL
             }
             pkey = request.pkey;
             rowSize = request.rowSize;
-            rowfile = name + ".dat";
+            dataFile = name + ".dat";
         }
 
         public Table(string filename)

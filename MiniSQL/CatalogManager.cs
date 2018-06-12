@@ -65,7 +65,7 @@ namespace MiniSQL
 
         bool isUnique(string table, string field)
         {
-            return fieldType(table, field).unique;
+            return tables[table].fields[field].unique;
         }
 
         bool isPK(string table, string field)
